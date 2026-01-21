@@ -406,7 +406,7 @@ body {
 .new__container {
   position: relative;
   margin: 2rem 0rem;
-  background-image: url("../../assets/img/new-background.jpg");
+  background-image: url("../../assets/new-background.jpg");
   background-repeat: no-repeat;
   background-size: cover; }
   .new__container .new__info {
@@ -481,7 +481,7 @@ body {
     position: relative;
     height: 750px;
     margin: 2rem;
-    background-image: url("../../assets/img/wallpaper-newIn.jpeg");
+    background-image: url("../../assets/wallpaper-newIn.jpeg");
     background-repeat: no-repeat;
     background-size: cover; }
     .newin .newin__secondary .newin__info {
@@ -885,7 +885,7 @@ body {
 .new__container {
   position: relative;
   margin: 2rem 0rem;
-  background-image: url("../../assets/img/new-background.jpg");
+  background-image: url("../../assets/new-background.jpg");
   background-repeat: no-repeat;
   background-size: cover; }
   .new__container .new__info {
@@ -960,7 +960,7 @@ body {
     position: relative;
     height: 750px;
     margin: 2rem;
-    background-image: url("../../assets/img/wallpaper-newIn.jpeg");
+    background-image: url("../../assets/wallpaper-newIn.jpeg");
     background-repeat: no-repeat;
     background-size: cover; }
     .newin .newin__secondary .newin__info {
