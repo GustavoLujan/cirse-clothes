@@ -2587,127 +2587,164 @@ html {
           padding: .5rem; }
         .filter__container .dropdown .dropdownmenu__filterby ul #filter__subtitles {
           padding: .5rem; } }
-/* Botón flotante (Launcher) */
-#chat-launcher {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(135deg, #007bff, #0056b3);
-    border-radius: 50%;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 28px;
-    z-index: 1001;
-    transition: transform 0.3s ease;
-}
 
-#chat-launcher:hover {
-    transform: scale(1.1) rotate(5deg);
-}
 
-/* Contenedor del Chat */
-#chat-container {
-    display: none; /* Se activa con JS */
-    position: fixed;
-    bottom: 90px;
-    right: 20px;
-    width: 330px;
-    height: 480px;
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    flex-direction: column;
-    overflow: hidden;
-    font-family: 'Segoe UI', Arial, sans-serif;
-    z-index: 1000;
-    animation: fadeIn 0.3s ease;
-}
+ /* 1. CONTENEDOR FLOTANTE (Fijado abajo a la derecha) */
+    #chat-launcher-container {
+        position: fixed !important;
+        bottom: 25px !important;
+        right: 25px !important;
+        display: flex !important;
+        align-items: center !important;
+        z-index: 10000 !important;
+        /* Animación de entrada con rebote */
+        animation: bounceIn 1s cubic-bezier(0.36, 0, 0.66, -0.56) 1s both;
+    }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
+    /* 2. ETIQUETA "¿Necesitas ayuda?" */
+    .chat-tooltip {
+        background-color: #EAE3DC !important;
+        color: #4A4A4A !important;
+        padding: 8px 15px !important;
+        border-radius: 12px !important;
+        font-size: 13px !important;
+        margin-right: 12px !important;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05) !important;
+        font-family: 'Montserrat', sans-serif !important;
+        position: relative !important;
+        white-space: nowrap !important;
+    }
 
-/* Cabecera */
-.chat-header {
-    background: #007bff;
-    color: white;
-    padding: 15px;
-    font-weight: bold;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+    /* Triangulito de la etiqueta */
+    .chat-tooltip::after {
+        content: '' !important;
+        position: absolute !important;
+        right: -6px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        border-top: 6px solid transparent !important;
+        border-bottom: 6px solid transparent !important;
+        border-left: 6px solid #EAE3DC !important;
+    }
 
-.close-chat {
-    cursor: pointer;
-    font-size: 20px;
-    line-height: 1;
-}
+    /* 3. BOTÓN CIRCULAR CON PUNTOS */
+    #chat-launcher {
+        width: 60px !important;
+        height: 60px !important;
+        background-color: #C5A992 !important; /* Color acorde a Cirse */
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        cursor: pointer !important;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.15) !important;
+        transition: transform 0.3s ease !important;
+    }
 
-/* Ventana de mensajes */
-#chat-window {
-    flex: 1;
-    padding: 15px;
-    overflow-y: auto;
-    background-color: #f8f9fa;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
+    #chat-launcher:hover {
+        transform: scale(1.1) !important;
+    }
 
-/* Burbujas */
-.msg {
-    padding: 10px 14px;
-    border-radius: 15px;
-    font-size: 14px;
-    max-width: 80%;
-    line-height: 1.4;
-}
+    #chat-launcher .dots {
+        color: white !important;
+        font-size: 24px !important;
+        font-weight: bold !important;
+        margin-top: -8px !important; /* Centrado visual */
+    }
 
-.bot-msg {
-    background: #e9ecef;
-    color: #333;
-    align-self: flex-start;
-    border-bottom-left-radius: 2px;
-}
+    /* 4. VENTANA DEL CHAT (MODERNA) */
+    #chat-container {
+        position: fixed !important;
+        bottom: 100px !important;
+        right: 25px !important;
+        width: 320px !important;
+        height: 480px !important;
+        background-color: #ffffff !important;
+        border-radius: 15px !important;
+        display: none; /* Controlado por JS */
+        flex-direction: column !important;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
+        z-index: 10000 !important;
+        overflow: hidden !important;
+        font-family: 'Montserrat', sans-serif !important;
+        border: 1px solid #EAE3DC !important;
+    }
 
-.user-msg {
-    background: #007bff;
-    color: white;
-    align-self: flex-end;
-    border-bottom-right-radius: 2px;
-}
+    .chat-header {
+        background-color: #C5A992 !important;
+        color: white !important;
+        padding: 18px !important;
+        font-size: 11px !important;
+        letter-spacing: 2px !important;
+        text-transform: uppercase !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+    }
 
-/* Opciones/Botones */
-#chat-options {
-    padding: 15px;
-    background: white;
-    border-top: 1px solid #eee;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
+    #chat-window {
+        flex: 1 !important;
+        padding: 20px !important;
+        overflow-y: auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+        background-color: #fff !important;
+    }
 
-.option-btn {
-    border: 2px solid #007bff;
-    background: transparent;
-    color: #007bff;
-    padding: 6px 12px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 13px;
-    font-weight: 600;
-    transition: all 0.2s;
-}
+    /* Burbujas de mensajes sin bordes de tabla */
+    .msg {
+        max-width: 85% !important;
+        padding: 10px 14px !important;
+        font-size: 14px !important;
+        line-height: 1.4 !important;
+        border: none !important;
+    }
 
-.option-btn:hover {
-    background: #007bff;
-    color: white;
-}
+    .bot-msg {
+        background-color: #F2F2F2 !important;
+        color: #333 !important;
+        border-radius: 15px 15px 15px 4px !important;
+        align-self: flex-start !important;
+    }
+
+    .user-msg {
+        background-color: #EAE3DC !important;
+        color: #4A4A4A !important;
+        border-radius: 15px 15px 4px 15px !important;
+        align-self: flex-end !important;
+    }
+
+    /* Botones de opciones elegantes */
+    #chat-options {
+        padding: 15px !important;
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+        background-color: #fff !important;
+        border-top: 1px solid #f0f0f0 !important;
+    }
+
+    .option-btn {
+        background-color: #C5A992 !important;
+        color: white !important;
+        border: none !important;
+        padding: 8px 16px !important;
+        border-radius: 20px !important;
+        cursor: pointer !important;
+        font-size: 12px !important;
+        transition: 0.2s !important;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05) !important;
+    }
+
+    .option-btn:hover {
+        background-color: #b3967f !important;
+    }
+
+    /* ANIMACIÓN DE REBOTE */
+    @keyframes bounceIn {
+        0% { opacity: 0; transform: scale(0.3) translateY(100px); }
+        50% { opacity: 1; transform: scale(1.05) translateY(-10px); }
+        70% { transform: scale(0.9) translateY(5px); }
+        100% { transform: scale(1) translateY(0); }
+    }

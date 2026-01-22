@@ -292,13 +292,19 @@
         <script src="js/index.js"></script>
         <!-- AOS -->
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <div id="chat-launcher" onclick="toggleChat()">
-    💬
+  
+       
+        <div id="chat-launcher-container">
+    <div class="chat-tooltip">Need help?</div>
+    <div id="chat-launcher" onclick="toggleChat()">
+        <span class="dots">...</span>
+    </div>
+</div>
 </div>
 
 <div id="chat-container">
     <div class="chat-header">
-        <span>🤖 Asistente Cirse</span>
+        <span>🤖 Cirse Assistant</span>
         <span class="close-chat" onclick="toggleChat()">×</span>
     </div>
     <div id="chat-window">
@@ -309,40 +315,40 @@
 
 <script>
     // Definición del flujo de conversación (Árbol de decisiones)
-    const chatFlow = {
+   const chatFlow = {
         inicio: {
-            texto: "¡Hola! 👋 Bienvenido a Cirse Fashion. ¿En qué podemos ayudarte hoy?",
+            texto: "Hello! 👋 Welcome to Cirse Clothes. How can we help you today?",
             opciones: [
-                { etiqueta: "Ver Colección", proximo: "coleccion" },
-                { etiqueta: "Horarios", proximo: "horarios" },
-                { etiqueta: "Contacto", proximo: "contacto" }
+                { etiqueta: "View Collection", proximo: "coleccion" },
+                { etiqueta: "Store Hours", proximo: "horarios" },
+                { etiqueta: "Contact Us", proximo: "contacto" }
             ]
         },
         horarios: {
-            texto: "Nuestros horarios de atención son:\n\n🗓️ Lunes a Viernes: 09:00 a 19:00 hs.\n🗓️ Sábados: 10:00 a 14:00 hs.",
+            texto: "Our store hours are:\n\n🗓️ Mon to Fri: 09:00 AM - 07:00 PM\n🗓️ Sat: 10:00 AM - 02:00 PM",
             opciones: [
-                { etiqueta: "Volver al menú", proximo: "inicio" }
+                { etiqueta: "Back to menu", proximo: "inicio" }
             ]
         },
         coleccion: {
-            texto: "Nuestra línea Loveless es tendencia. ¿Quieres ver vestidos o accesorios?",
+            texto: "Our Loveless line is currently trending. Would you like to see Dresses or Accessories?",
             opciones: [
-                { etiqueta: "Vestidos", proximo: "vestidos_info" },
-                { etiqueta: "Accesorios", proximo: "accesorios_info" },
-                { etiqueta: "Volver", proximo: "inicio" }
+                { etiqueta: "Dresses", proximo: "vestidos_info" },
+                { etiqueta: "Accessories", proximo: "accesorios_info" },
+                { etiqueta: "Back", proximo: "inicio" }
             ]
         },
         vestidos_info: {
-            texto: "¡Excelente! Puedes ver todos los modelos actuales en la sección 'Dresses' de nuestro menú.",
-            opciones: [{ etiqueta: "Entendido", proximo: "inicio" }]
+            texto: "Excellent! You can see all current models in the 'Dresses' section of our menu.",
+            opciones: [{ etiqueta: "Got it!", proximo: "inicio" }]
         },
         accesorios_info: {
-            texto: "Los accesorios Loveless están disponibles en la sección 'Accesories'. ¡Combinan con todo!",
-            opciones: [{ etiqueta: "Gracias", proximo: "inicio" }]
+            texto: "Loveless accessories are available in the 'Accessories' section. They go with everything!",
+            opciones: [{ etiqueta: "Thanks!", proximo: "inicio" }]
         },
         contacto: {
-            texto: "Puedes enviarnos un mail a contacto@cirse.com o escribirnos por mensaje directo en Instagram.",
-            opciones: [{ etiqueta: "Volver al inicio", proximo: "inicio" }]
+            texto: "You can email us at contact@cirse.com or send us a DM on Instagram.",
+            opciones: [{ etiqueta: "Back to start", proximo: "inicio" }]
         }
     };
 
